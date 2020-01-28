@@ -1,5 +1,4 @@
-alert("Hello! I am an alert box!!");
-
+//draw grid function
 function drawGrid(ctx, minor, major, stroke, fill) {
 minor = minor || 10;
 major = major || minor * 5;
@@ -29,4 +28,16 @@ ctx.fillText(y, 0, y + 10);
 }
 }
 ctx.restore();
+}
+
+
+//draw pacman function
+function drawPacman (x, y, radius, mouth) {
+  context.beginPath();
+  context.arc(x, y, radius, 0.2 * Math.PI * mouth, 1.8 * Math.PI * mouth);
+  context. lineTo(x, y);
+  context.fillStyle = "yellow";
+  context.fill();
+  context.closePath();
+  context.stroke();
 }

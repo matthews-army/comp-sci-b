@@ -1,3 +1,5 @@
+alert ("Depreciated code");
+
 function drawGrid(ctx, minor, major, stroke, fill) {
 minor = minor || 10;
 major = major || minor * 5;

@@ -1,4 +1,4 @@
-alert ("Depreciated code");
+alert("Hello! I am an alert box!!");
 
 function drawGrid(ctx, minor, major, stroke, fill) {
 minor = minor || 10;

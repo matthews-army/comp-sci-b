@@ -4,7 +4,7 @@
     <form>
       <p>Link:
         <input id="Url" type="text/plain">
-        <a id="Button"><button type="submit" onclick="return processInput()">Download</button></a>
+        <a id="Button" download><button type="submit" onclick="return processInput()">Download</button></a>
       </p>
       <script>document.getElementById("Button").href = document.getElementById("Url");</script>
     </form>

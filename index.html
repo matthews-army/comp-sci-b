@@ -4,9 +4,9 @@
     <form>
       <p>Link:
         <input id="Url" type="text/plain">
-        <a id="Button" download>Download</a>
+        <a id="Button" href="" download>Download</a>
       </p>
-      <script>document.getElementById("Button").href = document.getElementById("Url");</script>
+      <script>document.getElementById("Button").setAttribute("href", document.getElementById("Url"));</script>
     </form>
   </body>
 </html>

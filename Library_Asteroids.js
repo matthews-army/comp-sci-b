@@ -43,7 +43,7 @@ ctx.stroke();
 }
 
 
-
+// draw ship
 function drawShip(ctx, x, y, radius, options) {
 options = options || {};
 ctx.save();
@@ -62,7 +62,7 @@ ctx.fill();
 ctx.lineWidth = options.lineWidth || 2;
 ctx.strokeStyle = options.stroke || "white";
 ctx.fillStyle = options.fill || "black";
-let angle = (options.angle || 0.5 * Math.PI) / 2;
+let angle = (options.angle || 0.5 * Math.PI / 2);
 // draw the ship in three lines
 ctx.beginPath();
 ctx.moveTo(x + radius, y);

@@ -33,11 +33,49 @@ ctx.restore();
 
 //draw pacman function
 function drawPacman (ctx, x, y, radius, k) {
-  ctx.beginPath();
-  ctx.arc(x, y, radius, (0.2*k) * Math.PI, (2-.2*k)* Math.PI);
-  ctx. lineTo(x, y);
-  ctx.fillStyle = "yellow";
-  ctx.fill();
-  ctx.closePath();
-  ctx.stroke();
+ctx.beginPath();
+ctx.arc(x, y, radius, (0.2*k) * Math.PI, (2-.2*k)* Math.PI);
+ctx. lineTo(x, y);
+ctx.fillStyle = "yellow";
+ctx.fill();
+ctx.closePath();
+ctx.stroke();
+}
+
+
+
+function drawShip(ctx, x, y, radius, options) {
+options = options || {};
+ctx.save();
+// optionally draw a guide showing the collision radius
+if(options.guide) {
+ctx.strokeStyle = "white";
+ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
+
+ctx.lineWidth = 0.5;
+ctx.beginPath();
+ctx.arc(x, y, radius, 0, 2 * Math.PI);
+ctx.stroke();
+ctx.fill();
+}
+//set some default values
+ctx.lineWidth = options.lineWidth || 2;
+ctx.strokeStyle = options.stroke || "white";
+ctx.fillStyle = options.fill || "black";
+let angle = (options.angle || 0.5 * Math.PI) / 2;
+// draw the ship in three lines
+ctx.beginPath();
+ctx.moveTo(x + radius, y);
+ctx.lineTo(
+x + Math.cos(Math.PI - angle) * radius,
+y + Math.sin(Math.PI - angle) * radius
+);
+ctx.lineTo(
+x + Math.cos(Math.PI + angle) * radius,
+y + Math.sin(Math.PI + angle) * radius
+);
+ctx.closePath();
+ctx.fill();
+ctx.stroke();
+ctx.restore();
 }

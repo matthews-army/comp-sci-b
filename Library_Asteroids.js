@@ -46,7 +46,6 @@ ctx.stroke();
 // draw ship
 
 function drawShip(ctx, radius, options) {
-console.log("Draw ship");
 options = options || {};
 let angle = (options.angle || 0.5 * Math.PI / 2);
 // this is new

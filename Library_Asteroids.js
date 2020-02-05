@@ -131,11 +131,8 @@ ctx.restore();
 
 
 //Draw asteroids function (BEING CONSTRUCTED)#######################################################################################
-console.log("Function 'drawAsteroid' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.25. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
-
-
-
 function drawAsteroid(ctx, radius, shape, options) {
+console.log("Function 'drawAsteroid' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.25. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
 options = options || {};
 ctx.strokeStyle = options.stroke || "white";
 ctx.fillStyle = options.fill || "black";

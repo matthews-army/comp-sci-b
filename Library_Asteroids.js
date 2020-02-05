@@ -1,4 +1,4 @@
-console.log("Library 'matthews-army.github.io/comp-sci-b/Library_Asteroids.js' has just been accessed. Please note that calling functions from this library costs money. However, ignore price messages the FIRST time they appear. (ONLY the first!)");
+console.log("Library 'matthews-army.github.io/comp-sci-b/Library_Asteroids.js' has just been accessed. Please note that calling functions from this library costs money.");
 
 
 //draw grid function##################################################################################################################
@@ -37,7 +37,7 @@ ctx.restore();
 
 //draw pacman function################################################################################################################
 function drawPacman (ctx, x, y, radius, k) {
-console.log("Function 'drawPacman' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.25. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
+console.log("Function 'drawPacman' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.10. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
 ctx.beginPath();
 ctx.arc(x, y, radius, (0.2*k) * Math.PI, (2-.2*k)* Math.PI);
 ctx. lineTo(x, y);
@@ -50,7 +50,7 @@ ctx.stroke();
 
 // drawship function (very long)######################################################################################################
 function drawShip(ctx, radius, options) {
-console.log("Function 'drawShip' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.50. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
+console.log("Function 'drawShip' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
 options = options || {};
 let angle = (options.angle || 0.5 * Math.PI / 2);
 // Now we have two curve arguments
@@ -132,7 +132,7 @@ ctx.restore();
 
 //Draw asteroids function (BEING CONSTRUCTED)#######################################################################################
 function drawAsteroid(ctx, radius, shape, options) {
-console.log("Function 'drawAsteroid' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.25. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
+console.log("Function 'drawAsteroid' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com'.");
 options = options || {};
 ctx.strokeStyle = options.stroke || "white";
 ctx.fillStyle = options.fill || "black";

@@ -1,4 +1,5 @@
 //draw grid function##################################################################################################################
+console.log("Function 'drawGrid' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.25. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
 function drawGrid(ctx, minor, major, stroke, fill) {
 minor = minor || 10;
 major = major || minor * 5;
@@ -32,6 +33,7 @@ ctx.restore();
 
 
 //draw pacman function################################################################################################################
+console.log("Function 'drawPacman' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.25. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
 function drawPacman (ctx, x, y, radius, k) {
 ctx.beginPath();
 ctx.arc(x, y, radius, (0.2*k) * Math.PI, (2-.2*k)* Math.PI);
@@ -44,7 +46,7 @@ ctx.stroke();
 
 
 // drawship function (very long)######################################################################################################
-
+console.log("Function 'drawGrid' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.50. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
 function drawShip(ctx, radius, options) {
 options = options || {};
 let angle = (options.angle || 0.5 * Math.PI / 2);
@@ -127,7 +129,7 @@ ctx.restore();
 
 //Draw asteroids function (BEING CONSTRUCTED)#######################################################################################
 function drawAsteroid(ctx, radius, segments, options) {
-  alert("hello");
+  console.log("Function 'drawAsteroid' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.25. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
   options = options || {};
   ctx.strokeStyle = options.stroke || "white";
   ctx.fillStyle = options.fill || "black";

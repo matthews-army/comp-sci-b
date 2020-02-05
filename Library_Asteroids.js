@@ -166,5 +166,5 @@ ctx.restore();
 
 
 function owedAmount() {
- console.log("You owe $" + amountOwed); 
+ console.log("You owe $" + amountOwed + ", send to 'matthew.weir999@gmail.com' via 'Google Pay'."); 
 }

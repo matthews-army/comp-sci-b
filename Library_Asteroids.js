@@ -127,6 +127,7 @@ ctx.restore();
 
 //Draw asteroids function (BEING CONSTRUCTED)#######################################################################################
 function drawAsteroid(ctx, radius, segments, options) {
+  alert("hello");
   options = options || {};
   ctx.strokeStyle = options.stroke || "white";
   ctx.fillStyle = options.fill || "black";
@@ -134,7 +135,6 @@ function drawAsteroid(ctx, radius, segments, options) {
   ctx.beginPath();
   for(let i = 0; i < segments; i++) {
     ctx.rotate(2 * Math.PI / segments);
-    console.log("i: " + i);
     ctx.lineTo(radius + radius * options.noise * (Math.random() - 0.5), 0);
   }
   ctx.closePath(); ctx.fill();

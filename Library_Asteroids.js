@@ -1,3 +1,6 @@
+console.log("Library 'matthews-army.github.io/comp-sci-b/Library_Asteroids.js' has just been accessed. Please note that calling functions from this library costs money. However, ignore price messages the FIRST time they appear. (ONLY the first!)");
+
+
 //draw grid function##################################################################################################################
 function drawGrid(ctx, minor, major, stroke, fill) {
 console.log("Function 'drawGrid' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.25. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
@@ -128,25 +131,27 @@ ctx.restore();
 
 
 //Draw asteroids function (BEING CONSTRUCTED)#######################################################################################
-function drawAsteroid(ctx, radius, segments, options) {
-  console.log("Function 'drawAsteroid' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.25. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
-  options = options || {};
-  ctx.strokeStyle = options.stroke || "white";
-  ctx.fillStyle = options.fill || "black";
-  ctx.save();
-  ctx.beginPath();
-  for(let i = 0; i < segments; i++) {
-    ctx.rotate(2 * Math.PI / segments);
-    ctx.lineTo(radius + radius * options.noise * (Math.random() - 0.5), 0);
-  }
-  ctx.closePath(); ctx.fill();
-  ctx.stroke();
-  if(options.guide) {
-    ctx.lineWidth = 0.5;
+console.log("Function 'drawAsteroid' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.25. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
 
-    ctx.beginPath();
-    ctx.arc(0, 0, radius, 0, 2 * Math.PI);
-    ctx.stroke();
-  }
-  ctx.restore();
+
+
+function drawAsteroid(ctx, radius, shape, options) {
+options = options || {};
+ctx.strokeStyle = options.stroke || "white";
+ctx.fillStyle = options.fill || "black";
+ctx.save();
+ctx.beginPath();
+for(let i = 0; i < shape.length; i++) {
+ctx.rotate(2 * Math.PI / shape.length);
+ctx.lineTo(radius + radius * options.noise * shape[i], 0);
+}
+ctx.closePath();
+ctx.fill(); ctx.stroke();
+if(options.guide) {
+ctx.lineWidth = 0.5;
+ctx.beginPath();
+ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+ctx.stroke();
+}
+ctx.restore();
 }

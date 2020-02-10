@@ -1,11 +1,11 @@
 console.log("Library 'matthews-army.github.io/comp-sci-b/Library_Asteroids.js' has just been accessed. Please note that calling functions from this library costs money. You can see how much you owe by calling the function 'owedAmount' at the end of your code.")
 
-let amountOwed= 0;
+let amountOwed= 0.00;
 
 //draw grid function##################################################################################################################
 function drawGrid(ctx, minor, major, stroke, fill) {
-console.log("Function 'drawGrid' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.25. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
-amountOwed+= 0.25;
+console.log("Function 'drawGrid' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
+amountOwed+= 0.01;
 minor = minor || 10;
 major = major || minor * 5;
 stroke = stroke || "#00FF00";
@@ -39,8 +39,8 @@ ctx.restore();
 
 //draw pacman function################################################################################################################
 function drawPacman (ctx, x, y, radius, k) {
-console.log("Function 'drawPacman' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.10. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
-amountOwed+= 0.10;
+console.log("Function 'drawPacman' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
+amountOwed+= 0.01;
 ctx.beginPath();
 ctx.arc(x, y, radius, (0.2*k) * Math.PI, (2-.2*k)* Math.PI);
 ctx. lineTo(x, y);
@@ -173,7 +173,11 @@ function update() {
   console.log("Function 'update' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
   amountOwed+= 0.01;
   
-  x += 1;
+  x += 1; y += yspeed;
+yspeed += gravity;
+if( y >= context.canvas.height ) { // if you hit the bottom
+yspeed *= -0.8; // move up instead of down
+}
 }
 function draw(ctx) {
   console.log("Function 'draw' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");

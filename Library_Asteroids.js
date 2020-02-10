@@ -179,6 +179,7 @@ if( y >= context.canvas.height ) { // if you hit the bottom
 yspeed *= -0.8; // move up instead of down
 }
 }
+
 function draw(ctx) {
   console.log("Function 'draw' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
   amountOwed+= 0.01;

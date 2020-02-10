@@ -159,6 +159,24 @@ ctx.restore();
 }
 
 
+//animation functions (under construction)
+function frame() {
+  context.clearRect( 0, 0, context.canvas.width, context. canvas.height );
+  draw(context);
+  update();
+}
+
+function update() {
+  x += 1;
+}
+function draw(ctx) {
+  drawGrid(ctx);
+  ctx.beginPath();
+  ctx.arc(x, y, 40, 0, 2 * Math.PI);
+  ctx.fill();
+  ctx.stroke();
+}
+
 
 
 

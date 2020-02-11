@@ -176,7 +176,7 @@ function update() {
   x += 1; y += yspeed;
 yspeed += gravity;
 if( y >= context.canvas.height ) { // if you hit the bottom
-yspeed *= -0.8; // move up instead of down
+yspeed *= -1; // move up instead of down
 }
   if( x <= 0 || x >= context.canvas.width ) {
     x = (x + context.canvas.width) % context.canvas.width;

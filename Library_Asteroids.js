@@ -161,39 +161,48 @@ ctx.restore();
 
 //animation functions (under construction)###########################################################################################
 function frame() {
-  console.log("Function 'frame' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
-  amountOwed+= 0.01;
-  
-  context.clearRect( 0, 0, context.canvas.width, context. canvas.height );
-  draw(context);
-  update();
+console.log("Function 'frame' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
+amountOwed+= 0.01;
+context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+draw(context);
+update();
 }
+
 
 function update() {
-  console.log("Function 'update' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
-  amountOwed+= 0.01;
-  
-  x += 1; y += yspeed;
+console.log("Function 'update' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
+amountOwed+= 0.01;
+x += xspeed;
+y += yspeed;
 yspeed += gravity;
-if( y >= context.canvas.height ) { // if you hit the bottom
-yspeed *= -0.8; // move up instead of down
+if( y >= context.canvas.height – radius ) {
+y = context.canvas.height - radius; // add an extra radius
+yspeed *= -0.6; // reverse and slow down
+xspeed *= 0.95; // just slow down a bit
 }
-  if( x <= 0 || x >= context.canvas.width ) {
-    x = (x + context.canvas.width) % context.canvas.width;
-  }
+
+if( x <= 0 || x >= context.canvas.width ) {
+x = (x + context.canvas.width) % context.canvas.width;
 }
+mouth = Math.abs(Math.sin(6 * Math.PI * x / (context. canvas.width)));
+}
+
 
 function draw(ctx) {
-  console.log("Function 'draw' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
-  amountOwed+= 0.01;
-  
-  drawGrid(ctx);
-  ctx.beginPath();
-  ctx.arc(x, y, 40, 0, 2 * Math.PI);
-  ctx.fill();
-  ctx.stroke();
+console.log("Function 'draw' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
+amountOwed+= 0.01;
+drawGrid(ctx);
+// draw a simple circle
+ctx.beginPath();
+ctx.arc(x, y, radius, 0, 2 * Math.PI);
+ctx.fill();
+ctx.stroke();
+// or try this instead
+// ctx.save();
+// ctx.translate(x, y);
+// drawPacman(ctx, radius, mouth);
+// ctx.restore();
 }
-
 
 
 

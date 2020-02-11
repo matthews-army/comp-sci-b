@@ -38,16 +38,21 @@ ctx.restore();
 
 
 //draw pacman function################################################################################################################
-function drawPacman (ctx, x, y, radius, k) {
+function drawPacman(ctx, radius, mouth) {
 console.log("Function 'drawPacman' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
 amountOwed+= 0.01;
-ctx.beginPath();
-ctx.arc(x, y, radius, (0.2*k) * Math.PI, (2-.2*k)* Math.PI);
-ctx. lineTo(x, y);
+angle = 0.2 * Math.PI * mouth;
+ctx.save();
 ctx.fillStyle = "yellow";
-ctx.fill();
+ctx.strokeStyle = "black";
+ctx.lineWidth = 0.5;
+ctx.beginPath();
+ctx.arc(0, 0, radius, angle, -angle);
+ctx.lineTo(0, 0);
 ctx.closePath();
+ctx.fill();
 ctx.stroke();
+ctx.restore();
 }
 
 
@@ -180,7 +185,6 @@ y = context.canvas.height - radius; // add an extra radius
 yspeed *= -0.6; // reverse and slow down
 xspeed *= 0.95; // just slow down a bit
 }
-
 if( x <= 0 || x >= context.canvas.width ) {
 x = (x + context.canvas.width) % context.canvas.width;
 }

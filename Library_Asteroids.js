@@ -192,20 +192,15 @@ function update() {
 }
 
 
-function draw(ctx) {
-  console.log("Function 'draw' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
-  amountOwed+= 0.01;
-  drawGrid(ctx);
-  // draw a simple circle
-  ctx.beginPath();
-  ctx.arc(x, y, radius, 0, 2 * Math.PI);
-  ctx.fill();
-  ctx.stroke();
-  // or try this instead
-  // ctx.save();
-  // ctx.translate(x, y);
-  // drawPacman(ctx, radius, mouth);
-  // ctx.restore();
+function draw(ctx, guide) {
+if(guide) {
+drawGrid(ctx);
+}
+ctx.save();
+ctx.translate(x, y);
+ctx.rotate(angle);
+drawAsteroid(ctx, radius, shape, { guide: guide, noise: noise });
+ctx.restore();
 }
 
 

@@ -174,21 +174,22 @@ function frame() {
 }
 
 
-function update() {
-  console.log("Function 'update' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
-  amountOwed+= 0.01;
-  x += xspeed;
-  y += yspeed;
-  yspeed += gravity;
-  if( y >= context.canvas.height - radius ) {
-    y = context.canvas.height - radius; // add an extra radius
-    yspeed *= -0.6; // reverse and slow down
-    xspeed *= 0.95; // just slow down a bit
-  }
-  if( x <= 0 || x >= context.canvas.width ) {
-    x = (x + context.canvas.width) % context.canvas.width;
-  }
-  mouth = Math.abs(Math.sin(6 * Math.PI * x / (context. canvas.width)));
+function update(elapsed) {
+if(x - radius + elapsed * x_speed > context.canvas.width) {
+x = -radius;
+}
+if(x + radius + elapsed * x_speed < 0) {
+x = context.canvas. width + radius;
+}
+if(y - radius + elapsed * y_speed > context.canvas.height) {
+y = -radius;
+}
+if(y + radius + elapsed * y_speed < 0) {
+y = context.canvas. height + radius;
+}
+x += elapsed * x_speed;
+y += elapsed * y_speed;
+angle = (angle + elapsed * rotation_speed) % (2 * Math.PI);
 }
 
 

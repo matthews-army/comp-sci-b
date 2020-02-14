@@ -165,12 +165,15 @@ function drawAsteroid(ctx, radius, shape, options) {
 
 
 //animation functions (under construction)###########################################################################################
-function frame() {
-  console.log("Function 'frame' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
-  amountOwed+= 0.01;
-  context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-  draw(context);
-  update();
+function frame (timestamp) {
+context.clearRect(0, 0, context.canvas.width, context.canvas. height);
+if (!previous)
+previous = timestamp;
+elapsed = timestamp - previous;
+update(elapsed / 1000);
+draw(context, true);
+previous = timestamp;
+window.requestAnimationFrame(frame);
 }
 
 

@@ -139,7 +139,77 @@ function drawShip(ctx, radius, options) {
 }
 
 
+//Draw asteroids function###########################################################################################################
+function drawAsteroid(ctx, radius, shape, options) {
+  console.log("Function 'drawAsteroid' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
+  amountOwed+= 0.01;
+  options = options || {};
+  ctx.strokeStyle = options.stroke || "white";
+  ctx.fillStyle = options.fill || "black";
+  ctx.save();
+  ctx.beginPath();
+  for(let i = 0; i < shape.length; i++) {
+    ctx.rotate(2 * Math.PI / shape.length);
+    ctx.lineTo(radius + radius * options.noise * shape[i], 0);
+  }
+  ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  if(options.guide) {
+    ctx.lineWidth = 0.5;
+    ctx.beginPath();
+    ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
 
+
+//animation functions (under construction)###########################################################################################
+function frame (timestamp) {
+  context.clearRect(0, 0, context.canvas.width, context.canvas. height);
+  if (!previous)
+    previous = timestamp;
+  elapsed = timestamp - previous;
+  update(elapsed / 1000);
+  draw(context, true);
+  previous = timestamp;
+  window.requestAnimationFrame(frame);
+}
+
+
+function update(elapsed) {
+  //console.log("...entered update");
+  if(x - asteroid.radius + elapsed * asteroid.x_speed > context.canvas.width) {
+    x = -asteroid.radius;
+  }
+  if(x + radius + elapsed * x_speed < 0) {
+    x = context.canvas. width + radius;
+  }
+  if(y - radius + elapsed * y_speed > context.canvas.height) {
+    y = -radius;
+  }
+  if(y + radius + elapsed * y_speed < 0) {
+    y = context.canvas. height + radius;
+  }
+  x += elapsed * x_speed;
+  y += elapsed * y_speed;
+  //console.log("x,y: " + x + "," + y);
+  angle = (angle + elapsed * rotation_speed) % (2 * Math.PI);
+}
+
+
+function draw(ctx, guide) {
+  drawGrid(ctx);
+  ctx.save();
+  ctx.translate(asteroid.x, asteroid.y);
+  ctx.rotate(asteroid.angle);
+  drawAsteroid(ctx, asteroid.radius, asteroid.shape, {
+    noise: asteroid.noise,
+    guide: guide
+
+  });
+  ctx.restore();
+}
 
 
 

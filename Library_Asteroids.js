@@ -1,11 +1,5 @@
-console.log("Library 'matthews-army.github.io/comp-sci-b/Library_Asteroids.js' has just been accessed. Please note that calling functions from this library costs money. You can see how much you owe by calling the function 'owedAmount' at the end of your code.")
-
-let amountOwed= 0.00;
-
 //draw grid function##################################################################################################################
 function drawGrid(ctx, minor, major, stroke, fill) {
-  console.log("Function 'drawGrid' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
-  amountOwed+= 0.01;
   minor = minor || 10;
   major = major || minor * 5;
   stroke = stroke || "#00FF00";
@@ -39,8 +33,6 @@ function drawGrid(ctx, minor, major, stroke, fill) {
 
 //draw pacman function################################################################################################################
 function drawPacman(ctx, radius, mouth) {
-  console.log("Function 'drawPacman' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
-  amountOwed+= 0.01;
   angle = 0.2 * Math.PI * mouth;
   ctx.save();
   ctx.fillStyle = "yellow";
@@ -58,8 +50,6 @@ function drawPacman(ctx, radius, mouth) {
 
 // drawship function (very long)######################################################################################################
 function drawShip(ctx, radius, options) {
-  console.log("Function 'drawShip' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
-  amountOwed+= 0.01;
   options = options || {};
   let angle = (options.angle || 0.5 * Math.PI / 2);
   // Now we have two curve arguments
@@ -141,8 +131,6 @@ function drawShip(ctx, radius, options) {
 
 //Draw asteroids function###########################################################################################################
 function drawAsteroid(ctx, radius, shape, options) {
-  console.log("Function 'drawAsteroid' was just accessed from 'matthews-army.github.io/comp-sci-b/Library_Asteroids'. This action will cost you $0.01. Send through 'Google Pay' to 'matthew.weir999@gmail.com' as a reward for the time he took to write this function!");
-  amountOwed+= 0.01;
   options = options || {};
   ctx.strokeStyle = options.stroke || "white";
   ctx.fillStyle = options.fill || "black";
@@ -164,9 +152,9 @@ function drawAsteroid(ctx, radius, shape, options) {
 }
 
 
-//animation functions (under construction)###########################################################################################
+//animation functions###########################################################################################################
 function frame (timestamp) {
-  context.clearRect(0, 0, context.canvas.width, context.canvas. height);
+  context.clearRect(0, 0, context.canvas.width, context.canvas.height);
   if (!previous)
     previous = timestamp;
   elapsed = timestamp - previous;
@@ -177,45 +165,61 @@ function frame (timestamp) {
 }
 
 
-function update(elapsed) {
-  //console.log("...entered update");
-  if(x - asteroid.radius + elapsed * asteroid.x_speed > context.canvas.width) {
-    x = -asteroid.radius;
-  }
-  if(x + radius + elapsed * x_speed < 0) {
-    x = context.canvas. width + radius;
-  }
-  if(y - radius + elapsed * y_speed > context.canvas.height) {
-    y = -radius;
-  }
-  if(y + radius + elapsed * y_speed < 0) {
-    y = context.canvas. height + radius;
-  }
-  x += elapsed * x_speed;
-  y += elapsed * y_speed;
-  //console.log("x,y: " + x + "," + y);
-  angle = (angle + elapsed * rotation_speed) % (2 * Math.PI);
-}
-
-
 function draw(ctx, guide) {
-  drawGrid(ctx);
-  ctx.save();
-  ctx.translate(asteroid.x, asteroid.y);
-  ctx.rotate(asteroid.angle);
-  drawAsteroid(ctx, asteroid.radius, asteroid.shape, {
-    noise: asteroid.noise,
-    guide: guide
-
+  if(guide) {
+    drawGrid(ctx);
+  }
+  asteroids.forEach(function(asteroid) {
+    asteroid.draw(context, guide);
   });
-  ctx.restore();
+}
+function update(elapsed) {
+  asteroids.forEach(function(asteroid) {
+    asteroid.update(elapsed);
+  });
+}
+
+function Asteroid(segments, radius, noise) {
+  this.x = context.canvas.width * Math.random();
+  this.y = context.canvas.height * Math.random();
+  this.angle = 0;
+  this.x_speed = context.canvas.width * (Math.random() - 0.5);
+  this.y_speed = context.canvas.height * (Math.random() - 0.5);
+  this.rotation_speed = 2 * Math.PI * (Math.random() - 0.5);
+  this.radius = radius;
+  this.noise = noise;
+
+  this.shape = [];
+  for(let i = 0; i < segments; i++) {
+    this.shape.push(Math.random() - 0.5);
+  }
+}
+
+Asteroid.prototype.update = function(elapsed) {
+  if(this.x - this.radius + elapsed * this.x_speed > context.canvas.width) {
+
+    this.x = -this.radius;
+  }
+  if(this.x + this.radius + elapsed * this.x_speed < 0) {
+    this.x = context.canvas.width + this.radius;
+  }
+  if(this.y - this.radius + elapsed * this.y_speed > context.canvas.height) {
+    this.y = -this.radius;
+  }
+  if(this.y + this.radius + elapsed * this.y_speed < 0) {
+    this.y = context.canvas.height + this.radius;
+  }
+  this.x += elapsed * this.x_speed;
+  this.y += elapsed * this.y_speed;
+  this.angle = (this.angle + this.rotation_speed * elapsed) % (2 * Math.PI);
 }
 
 
+Asteroid.prototype.draw = function(ctx, guide) {
+  ctx.save();
+  ctx.translate(this.x, this.y);
 
-
-
-
-function owedAmount() {
-  console.log("You owe $" + amountOwed + ", send to 'matthew.weir999@gmail.com' via 'Google Pay'."); 
+  ctx.rotate(this.angle);
+  drawAsteroid(ctx, this.radius, this.shape, { guide: guide, noise: this.noise });
+  ctx.restore();
 }
